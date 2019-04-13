@@ -1,0 +1,273 @@
+from tkinter import *
+import tkinter.font
+from tkinter import messagebox
+from gpiozero import LED
+import RPi.GPIO
+import time
+
+RPi.GPIO.setmode(RPi.GPIO.BCM)
+
+ledWhite = LED(4)
+
+def Blink(type):
+    ledWhite.on()
+    
+    if(type == "dash"):
+        time.sleep(0.9)
+        ledWhite.off()
+    else:
+        time.sleep(0.3)
+        ledWhite.off()
+    
+    time.sleep(0.3)
+    ledWhite.off()
+    
+def space():
+    time.sleep(2.1)
+
+def A():
+    Blink("dot");
+    Blink("dash");
+    time.sleep(0.6)
+
+def  B():
+    Blink("dash");
+    Blink("dot");
+    Blink("dot");
+    Blink("dot");
+    time.sleep(0.6)
+
+def  C():
+    Blink("dash");
+    Blink("dot");
+    Blink("dash");
+    Blink("dot");
+    time.sleep(0.6)
+
+def D():
+    Blink("dash");
+    Blink("dot");
+    Blink("dot");
+    time.sleep(0.6)
+
+def E():
+    Blink("dot");
+    time.sleep(0.6)
+
+def F():
+    Blink("dot");
+    Blink("dot");
+    Blink("dash");
+    Blink("dot");
+    time.sleep(0.6)
+
+def G():
+    Blink("dash");
+    Blink("dash");
+    Blink("dot");
+    time.sleep(0.6)
+
+def H():
+    Blink("dot");
+    Blink("dot");
+    Blink("dot");
+    Blink("dot");
+    time.sleep(0.6)
+
+def I():
+    Blink("dot");
+    Blink("dot");
+    time.sleep(0.6)
+
+def J():
+    Blink("dot");
+    Blink("dash");
+    Blink("dash");
+    Blink("dash");
+    time.sleep(0.6)
+
+def  K():
+    Blink("dash");
+    Blink("dot");
+    Blink("dash");
+    time.sleep(0.6)
+
+def L():
+    Blink("dot");
+    Blink("dash");
+    Blink("dot");
+    Blink("dot");
+    time.sleep(0.6)
+
+def M():
+    Blink("dash");
+    Blink("dash");
+    time.sleep(0.6)
+
+
+def N():
+    Blink("dash");
+    Blink("dot");
+    time.sleep(0.6)
+
+def O():
+    Blink("dash");
+    Blink("dash");
+    Blink("dash");
+    time.sleep(0.6)
+
+def P():
+    Blink("dot");
+    Blink("dash");
+    Blink("dash");
+    Blink("dot");
+    time.sleep(0.6)
+
+def Q():
+    Blink("dash");
+    Blink("dash");
+    Blink("dot");
+    Blink("dash");
+    time.sleep(0.6)
+
+def R():
+    Blink("dot");
+    Blink("dash");
+    Blink("dot");
+    time.sleep(0.6)
+
+def S():
+    Blink("dot");
+    Blink("dot");
+    Blink("dot");
+    time.sleep(0.6)
+
+def T():
+    Blink("dash");
+    time.sleep(0.6)
+
+def U():
+    Blink("dot");
+    Blink("dot");
+    Blink("dash");
+    time.sleep(0.6)
+
+def V():
+    Blink("dot");
+    Blink("dot");
+    Blink("dot");
+    Blink("dash");
+    time.sleep(0.6)
+
+def W():
+    Blink("dot");
+    Blink("dash");
+    Blink("dash");
+    time.sleep(0.6)
+
+def X():
+    Blink("dash");
+    Blink("dot");
+    Blink("dot");
+    Blink("dash");
+    time.sleep(0.6)
+
+def Y():
+    Blink("dash");
+    Blink("dot");
+    Blink("dash");
+    Blink("dash");
+    time.sleep(0.6)
+
+def Z():
+    Blink("dash");
+    Blink("dash");
+    Blink("dot");
+    Blink("dot");
+    time.sleep(0.6)
+
+def close():
+    RPi.GPIO.cleanup()
+    win.destroy()
+    
+def getMessage():
+    message = list((TxtBox.get()).lower())
+    length = len(message)
+    
+    if length > 12:
+        messagebox.showinfo("Error", "Message must be 12 Characters maximum")
+        TxtBox.delete(0, END)
+    else:
+        for x in message:
+            if x == "a":
+                A();
+            if x == "b":
+                B();
+            if x == "c":
+                C();
+            if x == "d":
+                D();
+            if x == "e":
+                E();
+            if x == "f":
+                F();
+            if x == "g":
+                G();
+            if x == "h":
+                H();
+            if x == "i":
+                I();
+            if x == "j":
+                J();
+            if x == "k":
+                K();
+            if x == "l":
+                L();
+            if x == "m":
+                M();
+            if x == "n":
+                N();
+            if x == "o":
+                O();
+            if x == "p":
+                P();
+            if x == "q":
+                Q();
+            if x == "r":
+                R();
+            if x == "s":
+                S();
+            if x == "t":
+                T();
+            if x == "u":
+                U();
+            if x == "v":
+                V();
+            if x == "w":
+                W();
+            if x == "x":
+                X();
+            if x == "y":
+                Y();
+            if x == "z":
+                Z();
+            if x == " ":
+                space();
+
+win = Tk()
+win.geometry("300x50")
+win.title("5.3 Morse Code")
+font = tkinter.font.Font(family = "Arial", size = 10, weight = "bold")
+
+LabelTxt = Label(win, text="Enter Message")
+LabelTxt.grid(row=0, column = 0)
+TxtBox = Entry(win)
+TxtBox.grid(row=0, column = 2)
+
+exitButton = Button(win, text = "Morse Code", font = font, command = getMessage, height = 1, width = 10)
+exitButton.grid(row=2, column = 0)
+exitButton = Button(win, text = "Exit", font = font, command = close, height = 1, width = 10)
+exitButton.grid(row=2, column = 2)
+
+win.protocol("WM_DELETE_WINDOW", close)
+win.mainloop()
